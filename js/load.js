@@ -242,6 +242,46 @@ function makeVideoFrame(video) {
 
 // make text that can be copied for a citation
 function makeCitation(paper) {
+
+  var bibtex, venue;
+  if (paper.ConferenceTrack === "full" || paper.ConferenceTrack === "star"){
+    venue = "Computer Graphics Forum";
+
+    bibtex = "@Article{" + paper.simpleName + ",\n";
+    bibtex += "  author = {" + paper.Authors.split(", ").join(" and ") + "},\n";
+    bibtex += "  title = {" + paper.Title + "},\n";
+    bibtex += "  journal = {" + venue + "},\n";
+    bibtex += "  year = {" + paper.PublicationYear + "},\n";
+    bibtex += "  DOI = {" + paper.DOI + "}\n";
+    bibtex += "}";
+
+  } else if (paper.ConferenceTrack === "short") {
+
+      venue = "Proceedings of EuroVis 2018 - Short Papers";
+
+      bibtex = "@inproceedings{" + paper.simpleName + ",\n";
+      bibtex += "  author = {" + paper.Authors.split(", ").join(" and ") + "},\n";
+      bibtex += "  booktitle = {EuroVis 2018 - Short Papers},\n";
+      bibtex += "  title = {" + paper.Title + "},\n"; 
+      bibtex += "  year = {" + paper.PublicationYear + "},\n";
+      bibtex += "  publisher = {The Eurographics Association},\n"
+      bibtex += "  DOI = " + paper.DOI + "\n";
+      bibtex += "}";
+
+  } else if (paper.ConferenceTrack === "poster") {
+
+      venue = "Proceedings of EuroVis 2018 - Posters";
+
+      bibtex = "@inproceedings{" + paper.simpleName + ",\n";
+      bibtex += "  author = {" + paper.Authors.split(", ").join(" and ") + "},\n";
+      bibtex += "  booktitle = {EuroVis 2018 - Posters},\n";
+      bibtex += "  title = {" + paper.Title + "},\n";
+      bibtex += "  year = {" + paper.PublicationYear + "},\n";
+      bibtex += "  publisher = {The Eurographics Association},\n"
+      bibtex += "  DOI = " + paper.DOI + "\n";
+      bibtex += "}";
+  }
+
   var IEEE = "";
   var authors = paper.Authors.split(", ");
   authors = authors.map(convertName2Reference);
@@ -254,17 +294,11 @@ function makeCitation(paper) {
     IEEE += ", and " + authors[authors.length - 1];
   }
   IEEE += ". \"" + paper.Title + "\". ";
-  IEEE += journals[paper.PublicationVenue] + ". ";
+  IEEE += venue + ". ";
   IEEE += paper.PublicationYear + ". ";
   IEEE += paper.DOI ? "DOI:" + paper.DOI + "." : "";
 
-  var bibtex = "@Article{" + paper.simpleName + ",\n";
-  bibtex += "  author = " + paper.Authors.split(", ").join(" and ") + "\n";
-  bibtex += "  title = " + paper.Title + "\n";
-  bibtex += "  journal = " + journals[paper.PublicationVenue] + "\n";
-  bibtex += "  year = " + paper.PublicationYear + "\n";
-  bibtex += "  DOI = " + paper.DOI + "\n";
-  bibtex += "}";
+
 
   return IEEE + "\n\n" + bibtex;
 }
