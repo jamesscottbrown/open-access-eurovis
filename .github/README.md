@@ -1,6 +1,6 @@
 # How you can contribute to Open Access Vis
 
-Please create an [issue](https://github.com/steveharoz/open-access-vis/issues) to:
+Please create an [issue](https://github.com/jamesscottbrown/open-access-eurovis/issues) to:
 
 * Add missing data
 * Fix incorrect data
