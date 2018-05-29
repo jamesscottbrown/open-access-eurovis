@@ -295,8 +295,15 @@ function makeCitation(paper) {
   }
   IEEE += ". \"" + paper.Title + "\". ";
   IEEE += venue + ". ";
-  IEEE += paper.PublicationYear + ". ";
-  IEEE += paper.DOI ? "DOI:" + paper.DOI + "." : "";
+
+  if (paper.PublicationYear){
+    IEEE += paper.PublicationYear + ". ";
+  }
+  
+  if (paper.DOI){
+    IEEE += paper.DOI ? "DOI:" + paper.DOI + "." : "";
+  }
+  
 
 
 
