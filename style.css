@@ -269,6 +269,19 @@ h1 svg:hover { fill: #5C7E99; }
 .vast    h3::before { content: "VAST"; }
 .scivis  h3::before { content: "SCI "; margin-right: .1em; }
 
+/* EuroVis styles */
+.full { background-color: #f0f0ff; }
+.short    { background-color: #f0fff0; }
+.star  { background-color: #fff0f0; }
+.poster  { background-color: #fafaea; }
+
+.full h3 { color: hsla(240, 100%, 80%, 1); }
+.short    h3 { color: hsla(120,  50%, 70%, 1); }
+.star  h3 { color: hsla(0,   100%, 80%, 1); }
+.poster   h3 { color: hsla(60, 75%, 45%, 1) }
+
+
+
 
 .btn-infovis:hover, .btn-infovis:focus:hover {
     color: hsla(240, 100%, 97%, 1);
