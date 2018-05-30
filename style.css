@@ -180,6 +180,7 @@ h1 svg:hover { fill: #5C7E99; }
 .paper.closedAccess .thumbExpander { cursor: default; }
 .paper.closedAccess .links,
 .paper.closedAccess .expander,
+.paper.closedAccess .time { display: none; }
 .paper.closedAccess .title, 
 .paper.closedAccess .authors,
 .paper.closedAccess .closedAccessMessage,
