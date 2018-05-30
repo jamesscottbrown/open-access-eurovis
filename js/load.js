@@ -132,7 +132,7 @@ function buildPage() {
   right.appendLink("sourceMaterial", "Materials", d => d.SourceMaterials);
   right.appendLink("data", "Data", d => d.Data);
   right.appendLink("projectPage", "Explanation", d => d.ExplanationPage);
-  right.appendLink("video", "Video", d => d.Video);
+  right.appendLink("video", "Video", d => getVideoLink(d.Video));
 
 
   ///// expander content  /////
@@ -239,6 +239,24 @@ function makeVideoFrame(video) {
   }
   return video;
 }
+
+function getVideoLink(video){
+  if (video.startsWith("youtube ")) {
+    var videoID = video.split(" ")[1];
+    return `https://www.youtube.com/watch?v=${videoID}`;
+  }
+  if (video.startsWith("vimeo ")) {
+    var videoID = video.split(" ")[1];
+    return `https://vimeo.com/${videoID}`;
+  }
+  if (video.startsWith("video ")) {
+    var videoID = video.split(" ")[1];
+    return `${videoID}`;
+  }
+  return video;
+
+}
+
 
 // make text that can be copied for a citation
 function makeCitation(paper) {
