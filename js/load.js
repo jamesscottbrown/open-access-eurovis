@@ -93,15 +93,15 @@ function buildPage() {
     .classed("col-sm-3 col-sm-2 hidden-xs thumbExpander", true);
   left.append("img")
     .classed("spacer", true)
-    .attr("src", "images/blank.png");
+    .attr("src", "../images/blank.png");
 
   ///// expander button  /////
   var expander = left.append("div").classed("thumbExpanderContainer", true);
   thumbnails = expander.append("div").classed("thumbContainer", true).append("img")
     .classed("thumb", true)
-    .on("error", (d,i,nodes) => d3.select(nodes[i]).attr("src", "images/no_thumbnail.png" ))
-    .attr("src", "images/Closed_Access_Research.svg");
-  expander.append("img").classed("expander", true).attr("src", "images/chevron-circle-down.svg");
+    .on("error", (d,i,nodes) => d3.select(nodes[i]).attr("src", "../images/no_thumbnail.png" ))
+    .attr("src", "../images/Closed_Access_Research.svg");
+  expander.append("img").classed("expander", true).attr("src", "../images/chevron-circle-down.svg");
   left.on("click", (d,i) => expandEventHandler(left, d));
 
   ///// basic info /////
@@ -126,7 +126,7 @@ function buildPage() {
   var mobileExpander = right.append("div").classed("expanderContainer", true)
     .append("img")
       .classed("expander", true)
-      .attr("src", "images/chevron-circle-down.svg");
+      .attr("src", "../images/chevron-circle-down.svg");
     mobileExpander.on("click", (d,i) => expandEventHandler(left, d));
   right.appendLink("PDF", "PDF", d => d.AuthorPDF);
   right.appendLink("sourceMaterial", "Materials", d => d.SourceMaterials);
@@ -175,7 +175,7 @@ function dropLeadingArticle (text) {
 // get thumbnail image
 function getThumbnailPath(paper) {
   if (paper.closedAccess)
-    return "images/Closed_Access_Research.svg";
+    return "../images/Closed_Access_Research.svg";
   return thumbnailFolder + paper.simpleName + ".png";
 }
 
@@ -213,7 +213,7 @@ d3.selection.prototype.appendLink = function (css, text, href) {
 
   link.append("img")
     .attr("src", d => 
-      "images/" +
+      "../images/" +
       linkImages[text] + 
       (isOpenAccessDomain(href(d)) ? ".svg" : "-o.svg"));
 
