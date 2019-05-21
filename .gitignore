@@ -1,3 +1,4 @@
 .vscode/
 trash/
 oavis_analytics.php
+*.DS_Store
